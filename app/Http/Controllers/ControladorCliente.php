@@ -17,8 +17,8 @@ class ControladorCliente extends Controller{
         
     }
 
-    public function show(){
-        
+    public function show(Cliente $cliente){
+        return view('clientes/show', compact('cliente'));
     }
 
     public function edit(){

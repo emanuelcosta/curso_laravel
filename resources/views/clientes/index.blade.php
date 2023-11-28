@@ -10,7 +10,7 @@
             <thead>
                 <tr>
                     <th>Código</th>
-                    <th>Nome da Categoria</th>
+                    <th>Nome</th>
                     <th>Ações</th>
                 </tr>
             </thead>
@@ -20,6 +20,7 @@
                     <td>{{$cliente->id}}</td>
                     <td>{{$cliente->nome}}</td>
                     <td>
+                        <a href="{{ url('/clientes', $cliente->id) }}" class="">Ver</a>
                         <a href="/categorias/editar/{{$cliente->id}}" class="btn btn-sm btn-primary">Editar</a>
                         <a href="/categorias/apagar/{{$cliente->id}}" class="btn btn-sm btn-danger">Apagar</a>
                     </td>
