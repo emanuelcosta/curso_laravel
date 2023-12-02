@@ -117,7 +117,7 @@
             "<td>" + p.nome + "</td>" +
             "<td>" + p.estoque + "</td>" +
             "<td>" + p.preco + "</td>" +
-            "<td>" + p.categoria_id + "</td>" +
+            "<td>" + p.categoria.nome + "</td>" +
             "<td>" +
               '<button class="btn btn-sm btn-primary" onclick="editar(' + p.id + ')"> Editar </button> ' +
               '<button class="btn btn-sm btn-danger" onclick="remover(' + p.id + ')"> Apagar </button> ' +
