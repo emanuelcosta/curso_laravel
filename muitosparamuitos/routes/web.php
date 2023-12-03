@@ -15,7 +15,7 @@ use App\Desenvolvedor;
 use App\Alocacao;
 use App\Projeto;
 
-Route::get('/desenvolvedor_projeto', function () {
+Route::get('/desenvolvedor_projetos', function () {
     $desenvolvedores = Desenvolvedor::with('projetos')->get();
 
     foreach ($desenvolvedores as $d) :
