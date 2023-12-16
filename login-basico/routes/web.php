@@ -11,11 +11,24 @@
 |
 */
 
+use App\Cliente;
+
 Route::get('/', function () {
     return view('welcome');
 });
 
 Auth::routes();
+
+/**
+ * Clientes
+ */
+Route::get('/', 'ClienteControlador@index');
+Route::get('/clientesjs', 'ClienteControlador@clientesjs');
+Route::get('/clientes/json', 'ClienteControlador@clientesjson');
+
+/**
+ * Clientes
+ */
 
 Route::get('/home', 'HomeController@index')->name('home');
 
