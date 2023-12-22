@@ -8,12 +8,14 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
     <body>
         <app-root></app-root>
-<script src="{{ asset('js/browser/polyfills-LZBJRJJE.js') }}" type="module"></script>
-<script src="{{ asset('js/browser/main-ITUGWXVG.js') }}" type="module"></script>
-
+        <script type="text/javascript" src="{{ asset('js/runtime.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/polyfills.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/styles.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/vendor.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
     </body>
 </html>
