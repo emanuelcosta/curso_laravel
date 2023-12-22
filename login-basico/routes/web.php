@@ -43,3 +43,6 @@ Route::get('/departamentos', 'DepartamentoControlador@index');
 Route::get('/usuario', function(){
     return view('usuario');
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
