@@ -22,7 +22,7 @@ Auth::routes();
 /**
  * Clientes
  */
-Route::get('/', 'ClienteControlador@index');
+//Route::get('/', 'ClienteControlador@index');
 Route::get('/clientesjs', 'ClienteControlador@clientesjs');
 Route::get('/clientes/json', 'ClienteControlador@clientesjson');
 

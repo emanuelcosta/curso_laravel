@@ -18,6 +18,16 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        'App\Events\HomeEvent' => [
+            'App\Listeners\HomeEventListeners',
+            'App\Listeners\NewHomeEventListeners',
+        ],
+        'Illuminate\Auth\Events\Login' => [
+            'App\Listeners\LoginListener'
+        ],
+        'Illuminate\Auth\Events\Logout' => [
+            'App\Listeners\LogoutListener'
+        ]
     ];
 
     /**
