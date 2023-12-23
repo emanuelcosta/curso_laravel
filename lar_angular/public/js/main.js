@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".float-button{\r\n  position: fixed;\r\n  bottom: 40px;\r\n  right: 40px;\r\n}\r\n"
+module.exports = ".float-button{\n  position: fixed;\n  bottom: 40px;\n  right: 40px;\n}\n"
 
 /***/ }),
 
@@ -319,7 +319,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div fxLayout=\"column\" fxLayoutAlign=\"space-around none\">\n  <div fxLayout=\"row\" fxLayoutAlign=\"space-between\">\n    <mat-form-field fxFlex=\"50\">\n      <input matInput placeholder=\"Seu nome\" [(ngModel)]=\"dados.post.nome\">\n      <mat-hint>Digite aqui seu nome</mat-hint>\n    </mat-form-field>\n    <mat-form-field fxFlex=\"40\">\n      <input matInput placeholder=\"Seu email\" [(ngModel)]=\"dados.post.email\">\n      <mat-hint>Digite aqui seu email</mat-hint>\n    </mat-form-field>\n  </div>\n  <div fxLayout=\"row\" fxLayoutAlign=\"space-between\">\n    <mat-form-field fxFlex=\"50\">\n      <input matInput placeholder=\"Seu título da mensagem\" [(ngModel)]=\"dados.post.titulo\">\n    </mat-form-field>\n    <mat-form-field fxFlex=\"40\">\n      <input matInput placeholder=\"Seu subtítulo da mensagem\" [(ngModel)]=\"dados.post.subtitulo\">\n    </mat-form-field>\n  </div>\n  <mat-form-field>\n    <textarea matInput placeholder=\"Digite aqui sua mensagem\" [(ngModel)]=\"dados.post.mensagem\"></textarea>\n  </mat-form-field>\n</div>\n\n<input type=\"file\" style=\"display:none\" #fileinput (change)=\"mudouarquivo($event)\">\n<button mat-stroked-button color=\"primary\" (click)=\"fileinput.click()\">\n  <mat-icon>add_a_photo</mat-icon>\n  Adicionar uma Foto\n</button>\n\n<p *ngIf=\"nomearquivo!=''\"><strong>Arquivo:</strong>{{ nomearquivo }} <mat-icon color=\"primary\">done</mat-icon></p>\n\n<div style=\"text-align:center\">\n  <button mat-button color=\"primary\" (click)=\"salvar()\">OK</button>\n  <button mat-button color=\"warn\" (click)=\"cancelar()\">Cancelar</button>\n</div>\n"
+module.exports = "<div fxLayout=\"column\" fxLayoutAlign=\"space-around none\">\n  <div fxLayout=\"row\" fxLayoutAlign=\"space-between\">\n    <mat-form-field fxFlex=\"50\">\n      <input matInput placeholder=\"Seu nome\" [(ngModel)]=\"dados.post.nome\">\n      <mat-hint>Digite aqui seu nome</mat-hint>\n    </mat-form-field>\n    <mat-form-field fxFlex=\"40\">\n      <input matInput placeholder=\"Seu email\" [(ngModel)]=\"dados.post.email\" [formControl]=\"email\" required>\n      <mat-hint>Digite aqui seu email</mat-hint>\n      <mat-error *ngIf=\"email.invalid\">{{getErrorMessage()}}</mat-error>\n    </mat-form-field>\n  </div>\n  <div fxLayout=\"row\" fxLayoutAlign=\"space-between\">\n    <mat-form-field fxFlex=\"50\">\n      <input matInput placeholder=\"Seu título da mensagem\" [(ngModel)]=\"dados.post.titulo\">\n    </mat-form-field>\n    <mat-form-field fxFlex=\"40\">\n      <input matInput placeholder=\"Seu subtítulo da mensagem\" [(ngModel)]=\"dados.post.subtitulo\">\n    </mat-form-field>\n  </div>\n  <mat-form-field>\n    <textarea matInput placeholder=\"Digite aqui sua mensagem\" [(ngModel)]=\"dados.post.mensagem\"></textarea>\n  </mat-form-field>\n</div>\n\n<input type=\"file\" style=\"display:none\" #fileinput (change)=\"mudouarquivo($event)\">\n<button mat-stroked-button color=\"primary\" (click)=\"fileinput.click()\">\n  <mat-icon>add_a_photo</mat-icon>\n  Adicionar uma Foto\n</button>\n\n<p *ngIf=\"nomearquivo!=''\"><strong>Arquivo:</strong>{{ nomearquivo }} <mat-icon color=\"primary\">done</mat-icon></p>\n\n<div style=\"text-align:center\">\n  <button mat-button color=\"primary\" (click)=\"salvar()\">OK</button>\n  <button mat-button color=\"warn\" (click)=\"cancelar()\">Cancelar</button>\n</div>\n"
 
 /***/ }),
 
@@ -335,7 +335,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PostDialogComponent", function() { return PostDialogComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
-/* harmony import */ var _post__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../post */ "./src/app/post.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _post__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../post */ "./src/app/post.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -348,15 +349,22 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var PostDialogComponent = /** @class */ (function () {
     function PostDialogComponent(dialogRef) {
         this.dialogRef = dialogRef;
         this.nomearquivo = '';
         this.dados = {
-            post: new _post__WEBPACK_IMPORTED_MODULE_2__["Post"]("", "", "", "", ""),
+            post: new _post__WEBPACK_IMPORTED_MODULE_3__["Post"]("", "", "", "", ""),
             arquivo: null
         };
+        this.email = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].email]);
     }
+    PostDialogComponent.prototype.getErrorMessage = function () {
+        return this.email.hasError('required') ? 'You must enter a value' :
+            this.email.hasError('email') ? 'Not a valid email' :
+                '';
+    };
     PostDialogComponent.prototype.ngOnInit = function () {
     };
     PostDialogComponent.prototype.mudouarquivo = function (event) {
@@ -418,7 +426,7 @@ var PostService = /** @class */ (function () {
         var _this = this;
         this.http = http;
         this.posts = [];
-        this.host = "http://localhost:8082/curso_laravel/lar_angular/public/";
+        this.host = "http://localhost/curso-laravel5.8/cadastro-produtos/lar_angular/public/";
         this.http.get(this.host + "/api/").subscribe(function (posts) {
             for (var _i = 0, posts_1 = posts; _i < posts_1.length; _i++) {
                 var p = posts_1[_i];
@@ -467,6 +475,8 @@ var PostService = /** @class */ (function () {
             console.log(event);
         });
     };
+    PostService.prototype.update = function (post) {
+    };
     PostService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
         __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
@@ -513,7 +523,7 @@ var Post = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".card{\r\n  max-width: 300px;\r\n  margin: 10px;\r\n}\r\n"
+module.exports = ".card{\n  max-width: 300px;\n  margin: 10px;\n}\n"
 
 /***/ }),
 
@@ -644,7 +654,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\curso_laravel\lar_angular\resources\assets\angular-app\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /var/www/html/curso-laravel5.8/cadastro-produtos/lar_angular/resources/assets/angular-app/src/main.ts */"./src/main.ts");
 
 
 /***/ })

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
+import {FormControl, Validators} from '@angular/forms';
 import { Post } from '../post';
 
 @Component({
@@ -15,6 +16,13 @@ export class PostDialogComponent implements OnInit {
     arquivo: null
   };
 
+  email = new FormControl('', [Validators.required, Validators.email]);
+  getErrorMessage() {
+    return this.email.hasError('required') ? 'You must enter a value' :
+        this.email.hasError('email') ? 'Not a valid email' :
+            '';
+  }
+  
   constructor(
     public dialogRef:MatDialogRef<PostDialogComponent>
   ) { 

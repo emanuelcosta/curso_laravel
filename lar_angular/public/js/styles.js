@@ -539,7 +539,7 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\curso_laravel\lar_angular\resources\assets\angular-app\src\styles.css */"./src/styles.css");
+module.exports = __webpack_require__(/*! /var/www/html/curso-laravel5.8/cadastro-produtos/lar_angular/resources/assets/angular-app/src/styles.css */"./src/styles.css");
 
 
 /***/ })

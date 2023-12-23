@@ -7,7 +7,7 @@ import { HttpClient, HttpEvent, HttpEventType } from '@angular/common/http';
 @Injectable()
 export class PostService {
   public posts: Post[] = [];
-  public host = "http://localhost:8082/curso_laravel/lar_angular/public/"
+  public host = "http://localhost/curso-laravel5.8/cadastro-produtos/lar_angular/public/"
   constructor(private http: HttpClient) {
     this.http.get(this.host + "/api/").subscribe(
       (posts: any[]) => {
@@ -59,5 +59,9 @@ export class PostService {
         console.log(event);
       }
     );
+  }
+
+  update(post:Post){
+    
   }
 }

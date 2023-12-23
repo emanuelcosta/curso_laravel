@@ -5,8 +5,9 @@
       <mat-hint>Digite aqui seu nome</mat-hint>
     </mat-form-field>
     <mat-form-field fxFlex="40">
-      <input matInput placeholder="Seu email" [(ngModel)]="dados.post.email">
+      <input matInput placeholder="Seu email" [(ngModel)]="dados.post.email" [formControl]="email" required>
       <mat-hint>Digite aqui seu email</mat-hint>
+      <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
     </mat-form-field>
   </div>
   <div fxLayout="row" fxLayoutAlign="space-between">
