@@ -27,7 +27,10 @@ class LoginListener
     {
        info(sprintf("Usuário %s com email %s Logou!!", $event->user->name, $event->user->email));
        // user, users[], email
+       $quando = now()->addMinute(5);
         Mail::to($event->user)
-            ->send(new NovoAcesso($event->user));
+            //->send(new NovoAcesso($event->user));
+            // ->queue(new NovoAcesso($event->user));
+            ->later($quando, new NovoAcesso($event->user));
     }
 }
