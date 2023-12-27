@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Post } from "./post";
 import { HttpClient, HttpEvent, HttpEventType } from '@angular/common/http';
+import { User } from './user';
 // @Injectable({
 //   providedIn: 'root'
 // })
@@ -62,6 +63,10 @@ export class PostService {
   }
 
   update(post:Post){
+    
+  }
+
+  login(user: User){
     
   }
 }

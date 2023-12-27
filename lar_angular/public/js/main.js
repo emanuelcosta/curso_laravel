@@ -249,7 +249,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div fxLayout=\"column\" fxLayoutAlign=\"space-around none\">\n  <mat-form-field>\n    <input matInput placeholder=\"Email\">\n  </mat-form-field>\n\n  <mat-form-field>\n    <input matInput placeholder=\"Senha\" [type]=\"hide ? 'password' : 'text'\">\n    <mat-icon matSuffix (click)=\"hide = !hide\">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>\n  </mat-form-field>\n\n  <button mat-button color=\"primary\" (click)=\"logar()\">Login</button>\n</div>"
+module.exports = "<div fxLayout=\"column\" fxLayoutAlign=\"space-around none\">\n  <mat-form-field>\n    <input matInput placeholder=\"Email\" [(ngModel)]=\"user.email\">\n  </mat-form-field>\n\n  <mat-form-field>\n    <input matInput placeholder=\"Senha\" [type]=\"hide ? 'password' : 'text'\" [(ngModel)]=\"user.password\">\n    <mat-icon matSuffix (click)=\"hide = !hide\">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>\n  </mat-form-field>\n\n  <button mat-button color=\"primary\" (click)=\"logar()\">Login</button>\n</div>"
 
 /***/ }),
 
@@ -265,6 +265,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginComponent", function() { return LoginComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _user__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../user */ "./src/app/user.ts");
+/* harmony import */ var _post_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../post.service */ "./src/app/post.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -276,23 +278,31 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
+
 var LoginComponent = /** @class */ (function () {
-    function LoginComponent(dialogRef) {
+    function LoginComponent(dialogRef, postService) {
         this.dialogRef = dialogRef;
+        this.postService = postService;
         this.hide = true;
     }
     LoginComponent.prototype.ngOnInit = function () {
     };
     LoginComponent.prototype.logar = function () {
         console.log('login');
+        this.postService.login(this.user);
     };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", _user__WEBPACK_IMPORTED_MODULE_2__["User"])
+    ], LoginComponent.prototype, "user", void 0);
     LoginComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-login',
             template: __webpack_require__(/*! ./login.component.html */ "./src/app/login-dialog/login.component.html"),
             styles: [__webpack_require__(/*! ./login.component.css */ "./src/app/login-dialog/login.component.css")]
         }),
-        __metadata("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_1__["MatDialogRef"]])
+        __metadata("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_1__["MatDialogRef"], _post_service__WEBPACK_IMPORTED_MODULE_3__["PostService"]])
     ], LoginComponent);
     return LoginComponent;
 }());
@@ -477,6 +487,8 @@ var PostService = /** @class */ (function () {
     };
     PostService.prototype.update = function (post) {
     };
+    PostService.prototype.login = function (user) {
+    };
     PostService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
         __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
@@ -588,6 +600,28 @@ var PostComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [_post_service__WEBPACK_IMPORTED_MODULE_2__["PostService"]])
     ], PostComponent);
     return PostComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/user.ts":
+/*!*************************!*\
+  !*** ./src/app/user.ts ***!
+  \*************************/
+/*! exports provided: User */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "User", function() { return User; });
+var User = /** @class */ (function () {
+    function User(email, password) {
+        this.email = email;
+        this.password = password;
+    }
+    return User;
 }());
 
 

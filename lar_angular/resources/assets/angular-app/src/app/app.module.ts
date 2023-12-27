@@ -29,6 +29,7 @@ import {LoginComponent} from './login-dialog/login.component';
  */
 import {HttpClientModule} from '@angular/common/http';
 import { PostService } from './post.service';
+import { LoginRegisterComponent } from './login-register/login-register.component';
 // import { FlexLayoutModule} from '@angular/flex-layout';
 
 @NgModule({
@@ -36,7 +37,8 @@ import { PostService } from './post.service';
     AppComponent,
     PostComponent,
     PostDialogComponent,
-    LoginComponent
+    LoginComponent,
+    LoginRegisterComponent
     ],
   imports: [
     BrowserModule,
