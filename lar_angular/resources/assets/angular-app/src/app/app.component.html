@@ -1,18 +1,17 @@
 <mat-toolbar color="primary">
   <span>Projeto: Laravel + Angular</span>
 
-  <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+  <button mat-button [matMenuTriggerFor]="menu"><mat-icon>account_circle</mat-icon></button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item (click)="openDialogLogin()">Login</button>
+    <button *ngIf="!userLogado.id" mat-menu-item (click)="openDialogLogin()">Login</button>
+    <button *ngIf="userLogado.id" mat-menu-item (click)="logout()">{{ userLogado.name }}(Sair)</button>
   </mat-menu>
 </mat-toolbar>
 
 <mat-divider></mat-divider>
-<div fxLayout="row wrap" fxLayoutAlign="space-around stretch">
-  <app-post *ngFor="let p of posts" [post]="p"></app-post>
+<div fxLayout="row wrap" fxLayoutAlign="space-around stretch" class="row">
+  <app-post *ngFor="let p of posts" [post]="p" class="col-md-3 col-lg-3"></app-post>
 </div>
-
-
 
 <button mat-fab color="primary" class="float-button" (click)="openDialog()">
   <mat-icon>add</mat-icon>

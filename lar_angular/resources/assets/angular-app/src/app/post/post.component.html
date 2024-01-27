@@ -4,7 +4,7 @@
     <mat-card-title>{{ post.titulo }}</mat-card-title>
     <mat-card-subtitle>{{post.subtitulo}}</mat-card-subtitle>
   </mat-card-header>
-  <img mat-card-image src="{{ postService.host }}/storage/{{ post.arquivo }}" alt="Photo of a Shiba Inu">
+  <img mat-card-image src="{{ postService.host }}/storage/{{ post.arquivo }}" alt="{{ post.subtitulo }}">
   <mat-card-content>
     <p>
       {{post.mensagem}}

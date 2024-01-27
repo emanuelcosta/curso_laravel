@@ -7,7 +7,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
  */
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatDividerModule} from "@angular/material/divider";
+import {MatDividerModule} from '@angular/material/divider';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
@@ -30,7 +30,9 @@ import {LoginComponent} from './login-dialog/login.component';
 import {HttpClientModule} from '@angular/common/http';
 import { PostService } from './post.service';
 import { LoginRegisterComponent } from './login-register/login-register.component';
+import {UserService} from './user.service';
 // import { FlexLayoutModule} from '@angular/flex-layout';
+import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,7 @@ import { LoginRegisterComponent } from './login-register/login-register.componen
     PostComponent,
     PostDialogComponent,
     LoginComponent,
-    LoginRegisterComponent
+    LoginRegisterComponent,
     ],
   imports: [
     BrowserModule,
@@ -57,10 +59,12 @@ import { LoginRegisterComponent } from './login-register/login-register.componen
     MatDialogModule,
     MatChipsModule,
     MatBadgeModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSnackBarModule
   ],
   providers: [
-    PostService
+    PostService,
+    UserService
   ],
   entryComponents:[
     PostDialogComponent, LoginComponent

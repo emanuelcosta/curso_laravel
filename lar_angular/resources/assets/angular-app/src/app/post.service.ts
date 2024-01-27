@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Post } from "./post";
-import { HttpClient, HttpEvent, HttpEventType } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpEventType, HttpHeaders } from '@angular/common/http';
 import { User } from './user';
 // @Injectable({
 //   providedIn: 'root'
@@ -8,7 +8,8 @@ import { User } from './user';
 @Injectable()
 export class PostService {
   public posts: Post[] = [];
-  public host = "http://localhost/curso-laravel5.8/cadastro-produtos/lar_angular/public/"
+  private host = "http://localhost/curso_laravel/lar_angular/public/";
+
   constructor(private http: HttpClient) {
     this.http.get(this.host + "/api/").subscribe(
       (posts: any[]) => {
@@ -19,7 +20,7 @@ export class PostService {
     );
   }
 
-  salvar(post: Post, file: File) {
+  salvar(post: Post, file: File, usuarioLogado: User) {
     const uploadData = new FormData();
     uploadData.append("nome", post.nome);
     uploadData.append("titulo", post.titulo);
@@ -27,7 +28,16 @@ export class PostService {
     uploadData.append("email", post.email);
     uploadData.append("mensagem", post.mensagem);
     uploadData.append("arquivo", file);
-    this.http.post(this.host + "/api", uploadData, { observe: 'events', reportProgress: true }).subscribe((event: any) => {
+
+    const cabecalho = new HttpHeaders({
+      "Authorization": `Bearer ${usuarioLogado.token}`
+    });
+   
+    this.http.post(this.host + "/api", uploadData, {
+      observe: 'events',
+      reportProgress: true,
+      headers: cabecalho
+    }).subscribe((event: any) => {
       if (event.type == HttpEventType.Response) {
         console.log(event);
         let p: any = event.body;
@@ -41,7 +51,7 @@ export class PostService {
   }
 
   like(id: number) {
-    this.http.get(this.host + 'api/like/' + id, { reportProgress: true, observe: 'events' })
+    this.http.get(this.host + 'api/like/' + id, {reportProgress: true, observe: 'events'})
       .subscribe((event: HttpEvent<any>) => {
         if (event.type == HttpEventType.Response) {
           let post_resposta = event.body;
@@ -62,11 +72,8 @@ export class PostService {
     );
   }
 
-  update(post:Post){
-    
+  update(post: Post) {
+    console.log("update");
   }
 
-  login(user: User){
-    
-  }
 }

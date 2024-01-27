@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MatDialogRef } from '@angular/material';
+import { MatDialogRef, MatSnackBar } from '@angular/material';
 import {User} from '../user';
 import { PostService } from '../post.service';
+import {UserService} from "../user.service";
 
 @Component({
   selector: 'app-login',
@@ -10,18 +11,18 @@ import { PostService } from '../post.service';
 })
 export class LoginComponent implements OnInit {
   hide = true;
-  @Input() user: User;
+  private dados = {
+    user: new User("","","")
+  };
 
   ngOnInit() {
   }
 
-
-
-  constructor(public dialogRef: MatDialogRef<LoginComponent>, private postService:PostService){}
+  constructor(public dialogRef: MatDialogRef<LoginComponent>, private userService:UserService){}
 
   logar(){
     console.log('login');
-    this.postService.login(this.user);
+    this.userService.login(this.dados.user);
   }
 
 }
